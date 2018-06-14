@@ -8,14 +8,23 @@ import Footer from './Footer';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      text: '',
+    };
+  }
+
+  onChange = (e) => {
+    this.setState({
+      text: e.target.value,
+    });
   }
 
   render() {
     return (
       <div>
         <Header />
-        <Editor />
-        <Preview />
+        <Editor onChange={this.onChange} />
+        <Preview text={this.state.text} />
         <Footer />
       </div>
       );
