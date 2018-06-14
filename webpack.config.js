@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   mode: 'development',
   module: {
@@ -12,9 +12,22 @@ module.exports = {
       {
         test: /\.js$/,
         use: [
-          { loader: 'babel-loader'}
-        ]
-      }
-    ]
-  }
-}
+          {loader: 'babel-loader'},
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[local]-[hash:base64:5]',
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
