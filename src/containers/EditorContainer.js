@@ -8,7 +8,7 @@ export default class EditorContainer extends React.Component {
 
   render() {
     return (
-        <Editor />
+        <Editor onChange={this.props.onChange} />
       );
   }
 }
