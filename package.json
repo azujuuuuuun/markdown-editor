@@ -5,8 +5,7 @@
   "repository": "git@github.com:azujuuuuuun/markdown-editor.git",
   "license": "MIT",
   "scripts": {
-    "build": "node_modules/.bin/webpack --display-error-details",
-    "eslint": "node_modules/.bin/eslint"
+    "build": "node_modules/.bin/eslint src && node_modules/.bin/webpack --display-error-details"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
