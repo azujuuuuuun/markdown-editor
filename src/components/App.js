@@ -3,6 +3,7 @@ import Header from './Header';
 import Editor from '../containers/EditorContainer';
 import Preview from '../containers/PreviewContainer';
 import Footer from './Footer';
+import styles from './css/App.css';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.app}>
         <Header />
         <Editor onChange={this.onChange} />
         <Preview text={this.state.text} />
