@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './css/Preview.css';
 
 const Preview = (props) => {
   return (
-    <div>
+    <div className={styles.preview}>
       <span dangerouslySetInnerHTML={{__html: props.text}} />
     </div>
     );
