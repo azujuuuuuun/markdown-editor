@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './css/Editor.css';
 
-export default (props) => {
+const Editor = (props) => {
   return (
     <div>
       <textarea
@@ -12,3 +12,5 @@ export default (props) => {
     </div>
     );
 };
+
+export default Editor;
