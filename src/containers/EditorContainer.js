@@ -17,9 +17,10 @@ export default class EditorContainer extends React.Component {
       const end = elem.selectionEnd;
       const value = elem.value;
 
-      elem.value = value.substring(0, start) + '\t' + value.substring(end);
-      elem.selectionStart = elem.selectionEnd = start + 1;
-      this.props.onChange(e);
+      const newValue = value.substring(0, start) + '\t' + value.substring(end);
+      this.props.onChange(newValue, () => {
+        elem.selectionStart = elem.selectionEnd = start + 1;
+      });
     }
   }
 
