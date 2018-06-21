@@ -6,6 +6,7 @@ const Editor = (props) => {
     <div className={styles.editor}>
       <textarea
         className={styles.editorTextarea}
+        value={props.text}
         onChange={props.onChange}
         onKeyDown={props.onKeyDown}
       />

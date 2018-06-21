@@ -23,9 +23,17 @@ export default class EditorContainer extends React.Component {
     }
   }
 
+  handleChange = (e) => {
+    this.props.onChange(e.target.value);
+  }
+
   render() {
     return (
-      <Editor onChange={this.props.onChange} onKeyDown={this.handleKeyDown} />
+      <Editor
+        text={this.props.text}
+        onChange={this.handleChange}
+        onKeyDown={this.handleKeyDown}
+      />
       );
   }
 }
