@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default (props) => {
+const Footer = (props) => {
   return (
     <footer>
         <small>Copyright (c) Azuma and Moriizumi All Rights Reserved.</small>
     </footer>
     );
 };
+
+export default Footer;
