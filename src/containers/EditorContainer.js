@@ -17,15 +17,24 @@ export default class EditorContainer extends React.Component {
       const end = elem.selectionEnd;
       const value = elem.value;
 
-      elem.value = value.substring(0, start) + '\t' + value.substring(end);
-      elem.selectionStart = elem.selectionEnd = start + 1;
-      this.props.onChange(e);
+      const newValue = value.substring(0, start) + '\t' + value.substring(end);
+      this.props.onChange(newValue, () => {
+        elem.selectionStart = elem.selectionEnd = start + 1;
+      });
     }
+  }
+
+  handleChange = (e) => {
+    this.props.onChange(e.target.value);
   }
 
   render() {
     return (
-      <Editor onChange={this.props.onChange} onKeyDown={this.handleKeyDown} />
+      <Editor
+        text={this.props.text}
+        onChange={this.handleChange}
+        onKeyDown={this.handleKeyDown}
+      />
       );
   }
 }
