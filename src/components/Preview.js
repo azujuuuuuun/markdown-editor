@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default (props) => {
+const Preview = (props) => {
   return (
     <div>
       <span dangerouslySetInnerHTML={{__html: props.text}} />
     </div>
     );
 };
+
+export default Preview;
