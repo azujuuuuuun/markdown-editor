@@ -1,0 +1,9 @@
+.preview {
+  margin-right: 10px;
+  padding: 10px;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  border: 1px solid black;
+  overflow: scroll;
+  overflow-wrap: break-word;
+}
