@@ -3,7 +3,7 @@ import styles from './css/Editor.css';
 
 const Editor = (props) => {
   return (
-    <div>
+    <div className={styles.editor}>
       <textarea
         className={styles.editorTextarea}
         onChange={props.onChange}
