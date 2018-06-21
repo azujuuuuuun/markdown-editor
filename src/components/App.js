@@ -24,7 +24,7 @@ export default class App extends React.Component {
     return (
       <div className={styles.app}>
         <Header />
-        <Editor onChange={this.onChange} />
+        <Editor text={this.state.text} onChange={this.onChange} />
         <Preview text={this.state.text} />
         <Footer />
         <FileUploader onChange={this.onChange} />
