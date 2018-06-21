@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import FileUploader from '../containers/FileUploaderContainer';
 import Editor from '../containers/EditorContainer';
 import Preview from '../containers/PreviewContainer';
 import Footer from './Footer';
@@ -26,6 +27,7 @@ export default class App extends React.Component {
         <Editor onChange={this.onChange} />
         <Preview text={this.state.text} />
         <Footer />
+        <FileUploader onChange={this.onChange} />
       </div>
       );
   }
