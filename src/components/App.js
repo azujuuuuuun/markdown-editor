@@ -14,10 +14,10 @@ export default class App extends React.Component {
     };
   }
 
-  onChange = (e) => {
+  onChange = (text, callback) => {
     this.setState({
-      text: e.target.value,
-    });
+      text: text,
+    }, callback);
   }
 
   render() {
