@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import FileUploader from '../containers/FileUploaderContainer';
+import FileDownloader from '../containers/FileDownloaderContainer';
 import Editor from '../containers/EditorContainer';
 import Preview from '../containers/PreviewContainer';
 import Footer from './Footer';
@@ -28,6 +29,7 @@ export default class App extends React.Component {
         <Preview text={this.state.text} />
         <Footer />
         <FileUploader onChange={this.onChange} />
+        <FileDownloader text={this.state.text} />
       </div>
       );
   }
