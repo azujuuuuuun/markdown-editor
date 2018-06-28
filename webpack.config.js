@@ -1,5 +1,6 @@
 const path = require('path');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -11,9 +12,24 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: "pre",
         test: /\.js$/,
         use: [
-          {loader: 'babel-loader'},
+          { 
+            loader: "eslint-loader",
+            options: {
+              failOnWarning: true,
+              failOnError: true,
+              fix: true,
+              cache: true,
+            }
+          },
+        ]
+      },
+      {
+        test: /\.js$/,
+        use: [
+          { loader: 'babel-loader' },
         ],
       },
       {
@@ -33,5 +49,9 @@ module.exports = {
   },
   plugins: [
     new HardSourceWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'public/index.html'),
+      filename: 'index.html'
+    })
   ],
 };
