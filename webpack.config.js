@@ -1,6 +1,5 @@
 const path = require('path');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -49,9 +48,5 @@ module.exports = {
   },
   plugins: [
     new HardSourceWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public/index.html'),
-      filename: 'index.html'
-    })
   ],
 };
