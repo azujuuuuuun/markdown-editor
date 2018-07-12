@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "node_modules/.bin/webpack --display-error-details --watch",
-    "start": "./node_modules/.bin/nodemon ./src/server/app.js --watch ./"
+    "start": "./node_modules/.bin/nodemon ./src/server/app.js --watch ./",
+    "sequelize": "./node_modules/.bin/sequelize"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -23,6 +24,7 @@
     "eslint-plugin-react": "^7.9.1",
     "hard-source-webpack-plugin": "^0.8.1",
     "nodemon": "^1.17.5",
+    "sequelize-cli": "^4.0.0",
     "style-loader": "^0.21.0",
     "webpack": "^4.11.1",
     "webpack-cli": "^3.0.3"
@@ -30,7 +32,9 @@
   "dependencies": {
     "express": "^4.16.3",
     "marked": "^0.4.0",
+    "pg": "^7.4.3",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-dom": "^16.4.0",
+    "sequelize": "^4.38.0"
   }
 }
