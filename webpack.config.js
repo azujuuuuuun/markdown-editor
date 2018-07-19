@@ -14,11 +14,11 @@ module.exports = {
         enforce: "pre",
         test: /\.js$/,
         use: [
-          { 
+          {
             loader: "eslint-loader",
             options: {
-              failOnWarning: true,
-              failOnError: true,
+              // failOnWarning: true,
+              // failOnError: true,
               fix: true,
               cache: true,
             }
