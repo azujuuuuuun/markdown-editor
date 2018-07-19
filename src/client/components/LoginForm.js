@@ -1,15 +1,13 @@
 import React from 'react';
 import styles from './css/Form.css';
 
-const SignUp = (props) => {
+const LoginForm = (props) => {
   const {
     userName,
-    email,
     password,
     errorMessage,
     onClick,
     handleUserName,
-    handleEmail,
     handlePassword,
   } = props;
 
@@ -22,19 +20,13 @@ const SignUp = (props) => {
           type="text" value={userName}
           onChange={handleUserName}
         />
-        <label className={styles.label}>email</label>
-        <input
-          className={styles.input}
-          type="text" value={email}
-          onChange={handleEmail}
-        />
         <label className={styles.label}>password</label>
         <input
           className={styles.input}
           type="text" value={password}
           onChange={handlePassword}
         />
-        <button type="submit" onClick={onClick}>Register</button>
+        <button type="submit" onClick={onClick}>Login</button>
       </form>
       <div>
         <strong>{errorMessage}</strong>
@@ -43,4 +35,4 @@ const SignUp = (props) => {
   );
 };
 
-export default SignUp;
+export default LoginForm;
