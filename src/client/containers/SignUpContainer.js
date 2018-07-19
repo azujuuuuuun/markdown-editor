@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import SignUp from '../components/SignUp';
 
 export default class SignUpContainer extends React.Component {
@@ -42,7 +43,18 @@ export default class SignUpContainer extends React.Component {
       errorMessage,
     } = this.state;
     return (
-      <SignUp />
-      );
+      auth ?
+        <Redirect to='/app' /> :
+        <SignUp
+          onClick={this.onClick}
+          handleUserName={this.handleUserName}
+          handleEmail={this.handleEmail}
+          handlePassword={this.handlePassword}
+          userName={userName}
+          email={email}
+          password={password}
+          errorMessage={errorMessage}
+        />
+    );
   }
 }
