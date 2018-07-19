@@ -7,6 +7,7 @@ const Header = (props) => {
     <header className={styles.header} >
       <h1 className={styles.siteName}>Markdown Editor</h1>
       <Link to='/signup'>Sign Up</Link>
+      <Link to='/login'>Login</Link>
     </header>
     );
 };
