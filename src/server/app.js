@@ -5,12 +5,13 @@ const user = db.sequelize.import('../../db/models/user');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
 app.use('/dist', express.static('dist'));
 app.use('/public/css', express.static('public/css'));
+
 
 app.post('/signup', (req, res) => {
   const {
@@ -25,6 +26,24 @@ app.post('/signup', (req, res) => {
   })
     .then(() => {
       res.status(200).send();
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
+app.post('/login', (req, res) => {
+  const {
+    userName,
+    password,
+  } = req.body;
+  user.findOne({ where: { userName: userName, password: password } })
+    .then((u) => {
+      if (u) {
+        res.status(200).send();
+      } else {
+        res.status(400).send('error');
+      }
     })
     .catch((err) => {
       res.status(400).send(err);
