@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
 const db = require('../../db/models');
 const user = db.sequelize.import('../../db/models/user');
 
@@ -40,8 +41,10 @@ app.post('/signup', (req, res) => {
     email: email,
     password: password,
   })
-    .then(() => {
-      res.status(200).send();
+    .then((u) => {
+      console.log(u);
+      const token = jwt.sign({userId: u.id}, 'shhhhh');
+      res.status(200).send(token);
     })
     .catch((err) => {
       res.status(400).send(err);
@@ -56,7 +59,8 @@ app.post('/login', (req, res) => {
   user.findOne({where: {userName: userName, password: password}})
     .then((u) => {
       if (u) {
-        res.status(200).send();
+        const token = jwt.sign({userId: u.id}, 'shhhhh');
+        res.status(200).send(token);
       } else {
         res.status(400).send('error');
       }
