@@ -5,7 +5,7 @@ const user = db.sequelize.import('../../db/models/user');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
@@ -37,7 +37,7 @@ app.post('/login', (req, res) => {
     userName,
     password,
   } = req.body;
-  user.findOne({ where: { userName: userName, password: password } })
+  user.findOne({where: {userName: userName, password: password}})
     .then((u) => {
       if (u) {
         res.status(200).send();
