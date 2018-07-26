@@ -12,6 +12,22 @@ app.use(express.static('public'));
 app.use('/dist', express.static('dist'));
 app.use('/public/css', express.static('public/css'));
 
+app.get(/.*/, (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="ja">
+      <head>
+        <meta charset="UTF-8">
+        <title>markdown editor</title>
+        <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+      </head>
+      <body>
+        <div id="root"></div>
+        <script src="../dist/bundle.js"></script>
+      </body>
+    </html>
+  `);
+});
 
 app.post('/signup', (req, res) => {
   const {
