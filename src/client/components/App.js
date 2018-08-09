@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header from '../containers/HeaderContainer';
 import FileUploader from '../containers/FileUploaderContainer';
 import FileDownloader from '../containers/FileDownloaderContainer';
 import Editor from '../containers/EditorContainer';

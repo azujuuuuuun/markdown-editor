@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header from '../containers/HeaderContainer';
 import Footer from './Footer';
 import SignUp from '../containers/SignUpContainer';
 
