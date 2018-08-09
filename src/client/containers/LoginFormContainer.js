@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import sha256 from 'crypto-js/sha256';
 import Base64 from 'crypto-js/enc-base64';
 import LoginForm from '../components/LoginForm';
@@ -43,6 +43,8 @@ class LoginFormContainer extends React.Component {
       },
     })
       .then((res) => {
+        const token = res.data;
+        localStorage.setItem('token', token);
         this.props.login(true);
       })
       .catch((err) => {
@@ -55,17 +57,14 @@ class LoginFormContainer extends React.Component {
       userName,
       password,
     } = this.state;
-    const {auth} = this.props;
     return (
-      auth ?
-        <Redirect to='/app' /> :
-        <LoginForm
-          onClick={this.onClick}
-          handleUserName={this.handleUserName}
-          handlePassword={this.handlePassword}
-          userName={userName}
-          password={password}
-        />
+      <LoginForm
+        onClick={this.onClick}
+        handleUserName={this.handleUserName}
+        handlePassword={this.handlePassword}
+        userName={userName}
+        password={password}
+      />
     );
   }
 }
@@ -78,7 +77,7 @@ const mapDispatchToProps = (dispatch) => ({
   login: (auth) => dispatch(login(auth)),
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginFormContainer);
+)(LoginFormContainer));
