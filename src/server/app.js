@@ -70,6 +70,23 @@ app.post('/login', (req, res) => {
     });
 });
 
+app.post('/auth', (req, res) => {
+  const { token } = req.body;
+  const decoded = jwt.verify(token, 'shhhhh');
+  const { userId } = decoded;
+  user.findById(userId)
+    .then((u) => {
+      if (u) {
+        res.status(200).send(u);
+      } else {
+        res.status(400).send('error');
+      }
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
 app.listen(3000, () => {
   console.log('markdown-editor listening on port 3000!');
 });
