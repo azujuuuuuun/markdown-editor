@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import sha256 from 'crypto-js/sha256';
 import Base64 from 'crypto-js/enc-base64';
 import SignUp from '../components/SignUp';
@@ -51,6 +51,8 @@ class SignUpContainer extends React.Component {
       },
     })
       .then((res) => {
+        const token = res.data;
+        localStorage.setItem('token', token);
         this.props.login(true);
       })
       .catch((err) => {
@@ -64,19 +66,16 @@ class SignUpContainer extends React.Component {
       email,
       password,
     } = this.state;
-    const {auth} = this.props;
     return (
-      auth ?
-        <Redirect to='/app' /> :
-        <SignUp
-          onClick={this.onClick}
-          handleUserName={this.handleUserName}
-          handleEmail={this.handleEmail}
-          handlePassword={this.handlePassword}
-          userName={userName}
-          email={email}
-          password={password}
-        />
+      <SignUp
+        onClick={this.onClick}
+        handleUserName={this.handleUserName}
+        handleEmail={this.handleEmail}
+        handlePassword={this.handlePassword}
+        userName={userName}
+        email={email}
+        password={password}
+      />
     );
   }
 }
@@ -89,7 +88,7 @@ const mapDispatchToProps = (dispatch) => ({
   login: (auth) => dispatch(login(auth)),
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(SignUpContainer);
+)(SignUpContainer));
