@@ -13,7 +13,6 @@ class LoginFormContainer extends React.Component {
     this.state = {
       userName: '',
       password: '',
-      errorMessage: '',
     };
   }
 
@@ -55,7 +54,6 @@ class LoginFormContainer extends React.Component {
     const {
       userName,
       password,
-      errorMessage,
     } = this.state;
     const {auth} = this.props;
     return (
@@ -67,7 +65,6 @@ class LoginFormContainer extends React.Component {
           handlePassword={this.handlePassword}
           userName={userName}
           password={password}
-          errorMessage={errorMessage}
         />
     );
   }
