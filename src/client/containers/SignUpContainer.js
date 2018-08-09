@@ -1,19 +1,19 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import sha256 from 'crypto-js/sha256';
 import Base64 from 'crypto-js/enc-base64';
 import SignUp from '../components/SignUp';
+import {login} from '../actions';
 
-export default class SignUpContainer extends React.Component {
+class SignUpContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       userName: '',
       email: '',
       password: '',
-      auth: false,
-      errorMessage: '',
     };
   }
 
@@ -51,15 +51,10 @@ export default class SignUpContainer extends React.Component {
       },
     })
       .then((res) => {
-        this.setState({
-          auth: true,
-        });
+        this.props.login(true);
       })
       .catch((err) => {
-        this.setState({
-          auth: false,
-          errorMessage: 'error',
-        });
+        this.props.login(false);
       });
   }
 
@@ -68,9 +63,8 @@ export default class SignUpContainer extends React.Component {
       userName,
       email,
       password,
-      auth,
-      errorMessage,
     } = this.state;
+    const {auth} = this.props;
     return (
       auth ?
         <Redirect to='/app' /> :
@@ -82,8 +76,20 @@ export default class SignUpContainer extends React.Component {
           userName={userName}
           email={email}
           password={password}
-          errorMessage={errorMessage}
         />
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  auth: state.login,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  login: (auth) => dispatch(login(auth)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUpContainer);
