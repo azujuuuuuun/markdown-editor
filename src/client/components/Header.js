@@ -8,10 +8,17 @@ const Header = (props) => {
       <Link to='/'>
         <h1 className={styles.siteName}>Markdown Editor</h1>
       </Link>
-      <Link to='/signup'>Sign Up</Link>
-      <Link to='/login'>Login</Link>
+      {props.auth
+        ?
+        <Link to='/' onClick={props.onClick}>Logout</Link>
+        :
+        <div>
+          <Link to='/signup'>Sign Up</Link>
+          <Link to='/login'>Login</Link>
+        </div>
+      }
     </header>
-    );
+  );
 };
 
 export default Header;
