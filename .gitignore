@@ -6,3 +6,6 @@ node_modules/
 
 # built file
 dist/
+
+# vscode setting file
+.vs/
